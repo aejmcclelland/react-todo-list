@@ -6,18 +6,22 @@ import { TbRefresh } from 'react-icons/tb';
 import { FaRegEdit } from 'react-icons/fa';
 import { RiDeleteBin7Line } from 'react-icons/ri';
 
-
 export default function App() {
   const [tasks, setTasks] = useState([
     {
       id: 1,
-      title: 'Task 1',
+      title: 'buy doughnuts',
       completed: false,
     },
     {
       id: 2,
-      title: 'Task 2',
+      title: 'Cut the lawn',
       completed: true,
+    },
+    {
+      id: 3,
+      title: 'Learn to play guitar',
+      completed: false,
     },
   ]);
 
@@ -44,24 +48,25 @@ export default function App() {
             placeholder='Add Task'
             className='w-full px-5 py-2 bg-transparent border-2 outline-none border-zinc-200 rounded-x1 placeholder:text-zinc-500 focus:border-zinc-700'
           />
-          <button type='submit' className='px-5 py-2 text-white bg-blue-500 border-2 border-transparent rounded-lg hover:bg-blue-700'>
+          <button
+            type='submit'
+            className='px-5 py-2 text-white bg-blue-500 border-2 border-transparent rounded-lg hover:bg-blue-700'>
             Add
           </button>
         </div>
       </form>
       {/* Task List */}
       <ul className='grid max-w-lg gap-2 px-5 m-auto'>
-        {tasks.map(task => (
+        {tasks.map((task) => (
           <li
             key={task.id}
-            className={`p-5 rounded-xl bg-zinc-200 ${task.completed ? 'bg-opacity-50 text-zinc-500' : ''}`}
-          >
+            className={`p-5 rounded-xl bg-zinc-200 ${task.completed ? 'bg-opacity-50 text-zinc-500' : ''
+              }`}>
             <div className='flex flex-col gap-5'>
               <span
                 style={{
                   textDecoration: task.completed ? 'line-through' : 'none',
-                }}
-              >
+                }}>
                 {task.title}
               </span>
               <div className='flex justify-between gap-5'>
@@ -78,6 +83,16 @@ export default function App() {
                     </span>
                   )}
                 </button>
+                <div className='flex items-center gap-2'>
+                  <button className='flex items-center gap-1 hover:underlins'>
+                    <FaRegEdit />
+                    Edit
+                  </button>
+                  <button className='flex items-center gap-1 text-red-500 hover:underline'>
+                    <RiDeleteBin7Line />
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </li>
