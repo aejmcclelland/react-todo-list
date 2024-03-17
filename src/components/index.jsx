@@ -1,4 +1,5 @@
 // index.jsx
-export {AddTask} from './components/AddTask';
+export { AddTask } from './AddTask';
+export { TaskList } from './TaskList';
 
 // Path: src/components/index.jsx

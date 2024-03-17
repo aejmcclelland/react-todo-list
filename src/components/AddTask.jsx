@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 import { nanoid } from 'nanoid';
 
-export const AddTask = () => {
+import PropTypes from 'prop-types';
+
+export const AddTask = ({ setTasks }) => {
 
     const [title, setTitle] = useState('');
 
@@ -20,10 +22,8 @@ export const AddTask = () => {
     }
     const handleSubmit = event => {
         event.preventDefault();
-        if (title.trim() === '') {
+        if (title.trim() !== '') {
             addTask(title);
-            setTitle('');
-            toast.success('New task added successfully!')
         } else {
             toast.error('task field cannot be empty!')
         }
@@ -48,3 +48,6 @@ export const AddTask = () => {
         </form>
     )
 }
+AddTask.propTypes = {
+    setTasks: PropTypes.func.isRequired,
+};
